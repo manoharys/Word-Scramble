@@ -48,11 +48,12 @@ body {
         font-size: 40px;
         letter-spacing: 2px;
         font-family: 'Montserrat', sans-serif;
+        display: none;
     }
 
     button {
-        padding:9px;
-        width:9rem;
+        padding:14px;
+        width:19rem;
         background: green;
         outline: none;
         border-radius: 10px;
