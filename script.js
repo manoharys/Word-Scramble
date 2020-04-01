@@ -10,8 +10,8 @@ button.addEventListener('click', function () {
         inplay = true;
         button.innerHTML = "Guess";
         button.style.padding = "9px";
-        button.style.width = '9rem';
-        guess.style.display = 'block'
+        button.style.width = '9rem'; 
+        guess.style.display = 'block' 
         let random = Math.floor(Math.random() * array.length);
         message.innerHTML = array[random];
         randomArray(array, random);
@@ -20,17 +20,23 @@ button.addEventListener('click', function () {
 
 function randomArray(arr, rand) {
     console.log(arr);
+    //console.log(arr.length);
     console.log(rand);
     let randomised = arr[rand].split('');
     console.log(randomised);
     let randomisedNumber;
-    let temp = [];
-    for (let i=0 ;i<randomised.length;i++) {
-         randomisedNumber = Math.floor(Math.random() * (randomised.length));
-         temp[i] = randomised[randomisedNumber];
-         randomised[i] = temp[i];
+    let temp = randomised;
+    let check = temp;
+    for (let i = 0; i < randomised.length; i++) {
+        randomisedNumber = Math.floor(Math.random() * randomised.length);
+        console.log(randomisedNumber);
+        temp[i] = randomised[randomisedNumber];
     }
+    console.log(temp);
 
-   console.log(randomised);
+    //console.log(check);
+
+    //console.log(temp);
+    //console.log(randomised);
 
 }
