@@ -1,6 +1,7 @@
 const message = document.querySelector('.message');
 const guess = document.querySelector('input');
 const button = document.querySelector('button');
+const display = document.querySelector('.displayAnswer');
 const array = ['hello', 'html', 'give', 'ran', 'big', 'word', 'toy', 'war'];
 let random;
 let inplay = false;
@@ -8,6 +9,10 @@ let scramble, scrambled;
 let randomised
 button.addEventListener('click', function () {
     message.style.color = "black";
+    display.style.color = '';
+    display.style.fontSize = '22px';
+    display.innerHTML = "";
+
     if (!inplay) {
         inplay = true;
         button.innerHTML = "Guess";
@@ -17,7 +22,7 @@ button.addEventListener('click', function () {
         guess.style.display = 'block'
         random = Math.floor(Math.random() * array.length);
         scramble = array[random];
-        
+
         scrambled = randomArray(array, random);
         console.log(scramble);
         console.log(scrambled);
@@ -32,21 +37,26 @@ button.addEventListener('click', function () {
             button.innerHTML = "Start";
             guess.style.display = "none";
             message.innerHTML = "correct!!"
-           
+
         } else {
-            message.innerHTML = "wrong " + scrambled;
+
+            wrongStlyes();
+            message.innerHTML = scrambled;
+            guess.value = "";
         }
     }
 });
 
+
+//Function which shuffles the randomised split array
 function randomArray(arr, rand) {
     //console.log(arr);
     //console.log(arr.length);
-   // console.log(rand);
-     randomised = arr[rand].split('');
-  //  console.log(randomised);
+    // console.log(rand);
+    randomised = arr[rand].split('');
+    //  console.log(randomised);
     let i = randomised.length;
-  let temp, j;
+    let temp, j;
 
     //Fisher-Yates Shuffle algorithm
 
@@ -59,4 +69,13 @@ function randomArray(arr, rand) {
     }
     return (randomised.join(""));
 
+}
+
+//Function which addresses the styles of wrong(true/false)
+
+function wrongStlyes() {
+    display.style.color = 'red';
+    display.style.fontSize = '22px';
+    display.innerHTML = "wrong!!";
+    guess.style.border = "2px solid red";
 }
