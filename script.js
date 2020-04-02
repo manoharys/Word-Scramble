@@ -2,6 +2,7 @@ const message = document.querySelector('.message');
 const guess = document.querySelector('input');
 const button = document.querySelector('button');
 const display = document.querySelector('.displayAnswer');
+const input = document.getElementById("myText");
 const array = ['hello', 'html', 'give', 'ran', 'big', 'word', 'toy', 'war'];
 let random;
 let inplay = false;
@@ -14,6 +15,8 @@ button.addEventListener('click', function () {
     display.innerHTML = "";
 
     if (!inplay) {
+        guess.value = "";
+
         inplay = true;
         button.innerHTML = "Guess";
         button.style.padding = "9px";
@@ -22,14 +25,15 @@ button.addEventListener('click', function () {
         guess.style.display = 'block'
         random = Math.floor(Math.random() * array.length);
         scramble = array[random];
-
         scrambled = randomArray(array, random);
         console.log(scramble);
         console.log(scrambled);
         message.innerHTML = scrambled;
+        input.focus() = true;
+
     } else {
         let tempGuess = guess.value;
-        console.log(tempGuess);
+        // console.log(tempGuess);
         if (tempGuess === scramble) {
             inplay = false;
             console.log("hello");
@@ -39,10 +43,10 @@ button.addEventListener('click', function () {
             message.innerHTML = "correct!!"
 
         } else {
-
             wrongStlyes();
             message.innerHTML = scrambled;
             guess.value = "";
+            input.focus() = true;
         }
     }
 });
