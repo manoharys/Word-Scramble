@@ -24,19 +24,17 @@ function randomArray(arr, rand) {
     console.log(rand);
     let randomised = arr[rand].split('');
     console.log(randomised);
-    let randomisedNumber;
-    let temp = randomised;
-    let check = temp;
-    for (let i = 0; i < randomised.length; i++) {
-        randomisedNumber = Math.floor(Math.random() * randomised.length);
-        console.log(randomisedNumber);
-        temp[i] = randomised[randomisedNumber];
+    let i = randomised.length,temp,j;
+    
+    //Fisher-Yates Shuffle algorithm
+
+    while(--i>0){
+        j = Math.floor(Math.random()*(i+1));
+        //console.log(randomNumber);
+        temp = randomised[i];
+        randomised[i] = randomised[j];
+        randomised[j] = temp;
     }
-    console.log(temp);
-
-    //console.log(check);
-
-    //console.log(temp);
-    //console.log(randomised);
+  console.log(randomised);
 
 }
